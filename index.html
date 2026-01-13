@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aesheen Studio — Graphic Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        html { overflow-x: hidden; }
+
+        body {
+            font-family: 'Geist Mono', monospace;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f2f2f2;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 1rem 0;
+            border-bottom: none;
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            width: calc(100% - 4rem);
+            max-width: 1200px;
+            border-radius: 50px;
+            border: 1px solid #d9d9d9;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            animation: slideDown 0.8s ease-out backwards;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+        }
+
+        .theme-toggle {
+            background: #e5e5e5;
+            border: 1px solid #d0d0d0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 0;
+        }
+
+        .lang-toggle {
+            background: #e5e5e5;
+            border: 1px solid #d0d0d0;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            white-space: nowrap;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .theme-toggle:hover,
+        .lang-toggle:hover {
+            background: #ffffff;
+            border-color: #1a1a1a;
+            transform: scale(1.12);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: #1a1a1a;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 5rem;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+            margin-top: 6rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            letter-spacing: -1px;
+            animation: slideDown 0.8s ease-out 0.1s backwards;
+        }
+
+        .hero p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            animation: slideUp 0.8s ease-out 0.2s backwards;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 0.85rem;
+        }
+
+        .cta-button:hover {
+            background: #333;
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 0.7rem;
+            color: #1a1a1a;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 2.2rem;
+            font-weight: 500;
+        }
+
+        .about-content {
+            max-width: 700px;
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border: 1px solid #d9d9d9;
+            border-radius: 50px;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            animation: slideUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .project-card:hover {
+            border-color: #1a1a1a;
+            transform: translateY(-14px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 240px;
+            background: #e5e5e5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border-bottom: 1px solid #d9d9d9;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .project-image img {
+            animation: float 3s ease-in-out infinite, slide 5s ease-in-out infinite;
+        }
+
+        .project-card:nth-child(1) .project-image img {
+            animation-delay: 0s;
+        }
+
+        .project-card:nth-child(2) .project-image img {
+            animation-delay: 1s;
+        }
+
+        .project-card:nth-child(3) .project-image img {
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes slide {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(30px);
+            }
+        }
+
+        .project-info {
+            padding: 2rem;
+            background: #ffffff;
+        }
+
+        .project-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: #1a1a1a;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .project-card:hover .project-info h3 {
+            transform: translateX(8px);
+        }
+
+        .project-info p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            transition: color 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .project-card:hover .project-info p {
+            color: #1a1a1a;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            background: #ffffff;
+            border: 1px solid #d9d9d9;
+            border-radius: 50px;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slideUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .service-card:hover {
+            border-color: #1a1a1a;
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.3) rotate(12deg);
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: #1a1a1a;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .service-card:hover h3 {
+            transform: translateX(8px);
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            transition: color 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .service-card:hover p {
+            color: #1a1a1a;
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .contact-email {
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #1a1a1a;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .contact-email:hover {
+            opacity: 0.7;
+            transform: translateX(4px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .social-links a {
+            padding: 0.8rem 1.5rem;
+            background: #ffffff;
+            border: 1px solid #d9d9d9;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-radius: 16px;
+        }
+
+        .social-links a:hover {
+            background: #ffffff;
+            border-color: #1a1a1a;
+            color: #1a1a1a;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #d9d9d9;
+            margin-top: 6rem;
+            font-size: 0.9rem;
+        }
+
+        /* Aura Background */
+        .aura {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 200, 0, 0.12), rgba(255, 150, 80, 0.07), transparent);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 1;
+            will-change: left, top;
+            margin-left: -300px;
+            margin-top: -300px;
+        }
+
+        .aura::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 70% 70%, rgba(255, 180, 60, 0.1), rgba(255, 160, 40, 0.05), transparent);
+            filter: blur(60px);
+        }
+
+        .aura::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, rgba(255, 220, 100, 0.8), transparent),
+                radial-gradient(2px 2px at 60% 70%, rgba(255, 200, 80, 0.6), transparent),
+                radial-gradient(1px 1px at 50% 50%, rgba(255, 210, 90, 0.7), transparent),
+                radial-gradient(1.5px 1.5px at 80% 20%, rgba(255, 230, 120, 0.5), transparent),
+                radial-gradient(2px 2px at 10% 80%, rgba(255, 190, 70, 0.6), transparent),
+                radial-gradient(1px 1px at 90% 10%, rgba(255, 240, 130, 0.4), transparent),
+                radial-gradient(2px 2px at 40% 60%, rgba(255, 215, 100, 0.7), transparent),
+                radial-gradient(1.5px 1.5px at 70% 40%, rgba(255, 225, 110, 0.5), transparent);
+            background-size: 100% 100%;
+            background-position: 0 0;
+            filter: blur(0.5px);
+            animation: sparkle 4s ease-in-out infinite;
+        }
+
+        /* Dark Mode - Aura más sutil */
+        body.dark-mode .aura {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 180, 0, 0.08), rgba(255, 130, 60, 0.04), transparent);
+        }
+
+        body.dark-mode .aura::before {
+            background: radial-gradient(circle at 70% 70%, rgba(255, 160, 40, 0.05), rgba(255, 140, 20, 0.02), transparent);
+        }
+
+        @keyframes slideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes modalBounce {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) translateY(30px);
+            }
+            60% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            header {
+                top: 1rem;
+                width: calc(100% - 2rem);
+                padding: 0.8rem 0;
+            }
+
+            .hero {
+                margin-top: 5rem;
+            }
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #e5e5e5;
+        }
+
+        body.dark-mode header {
+            background: #1a1a1a;
+            border-bottom-color: #333;
+            border-color: #333;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .logo,
+        body.dark-mode h1,
+        body.dark-mode h2,
+        body.dark-mode h3 {
+            color: #ffffff;
+        }
+
+        body.dark-mode nav a {
+            color: #b3b3b3;
+        }
+
+        body.dark-mode nav a:hover {
+            color: #ffffff;
+        }
+
+        body.dark-mode .hero p,
+        body.dark-mode .section-subtitle,
+        body.dark-mode .about-content,
+        body.dark-mode .project-info p,
+        body.dark-mode .service-card p,
+        body.dark-mode .contact-content p {
+            color: #b3b3b3;
+        }
+
+        body.dark-mode .cta-button {
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+
+        body.dark-mode .cta-button:hover {
+            background: #e5e5e5;
+        }
+
+        body.dark-mode .project-card,
+        body.dark-mode .service-card {
+            background: #222;
+            border-color: #333;
+        }
+
+        body.dark-mode .project-card:hover,
+        body.dark-mode .service-card:hover {
+            border-color: #444;
+        }
+
+        body.dark-mode .service-card:hover h3,
+        body.dark-mode .service-card:hover p {
+            color: #ffffff;
+        }
+
+        body.dark-mode .service-icon {
+            color: #ffffff;
+        }
+
+        body.dark-mode .project-image {
+            background: #2a2a2a;
+            border-bottom-color: #333;
+        }
+
+        body.dark-mode .project-info {
+            background: #222;
+        }
+
+        body.dark-mode .project-card:hover .project-info h3,
+        body.dark-mode .project-card:hover .project-info p {
+            color: #ffffff;
+        }
+
+        body.dark-mode section {
+            border-top-color: #2a2a2a;
+        }
+
+        body.dark-mode .social-links a {
+            background: #2a2a2a;
+            border-color: #333;
+            color: #b3b3b3;
+        }
+
+        body.dark-mode .social-links a:hover {
+            background: #333;
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+        body.dark-mode .contact-email {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
+        }
+
+        body.dark-mode .lang-toggle,
+        body.dark-mode .theme-toggle {
+            background: #2a2a2a;
+            border-color: #333;
+            color: #b3b3b3;
+        }
+
+        body.dark-mode .lang-toggle:hover,
+        body.dark-mode .theme-toggle:hover {
+            background: #333;
+            border-color: #ffffff;
+        }
+
+        body.dark-mode footer {
+            background: #1a1a1a;
+            border-top-color: #333;
+            color: #b3b3b3;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            padding: 0;
+            border-radius: 50px;
+            max-width: 750px;
+            width: 92%;
+            max-height: 80vh;
+            overflow: hidden;
+            position: relative;
+            animation: modalBounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: row;
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: #f2f2f2;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: #1a1a1a;
+            z-index: 2000;
+            pointer-events: auto;
+        }
+
+        .modal-close:hover {
+            background: #e5e5e5;
+            transform: scale(1.2) rotate(90deg);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .modal-image {
+            width: 40%;
+            height: auto;
+            min-height: 320px;
+            object-fit: cover;
+            border-radius: 0;
+        }
+
+        .modal-text-container {
+            width: 60%;
+            padding: 2rem 2.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .modal-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-details {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .modal-details strong {
+            color: #1a1a1a;
+        }
+
+        body.dark-mode .modal-content {
+            background: #222;
+        }
+
+        body.dark-mode .modal-close {
+            background: #333;
+            color: #ffffff;
+        }
+
+        body.dark-mode .modal-close:hover {
+            background: #444;
+        }
+
+        body.dark-mode .modal-title {
+            color: #ffffff;
+        }
+
+        body.dark-mode .modal-text {
+            color: #b3b3b3;
+        }
+
+        body.dark-mode .modal-details {
+            background: #2a2a2a;
+            color: #999;
+        }
+
+        body.dark-mode .modal-details strong {
+            color: #ffffff;
+        }
+
+        .project-card {
+            cursor: pointer;
+        }
+
+        /* Auto slider */
+        .slider {
+            position: relative;
+            overflow: hidden;
+            background: #ffffff;
+            border: 1px solid #d9d9d9;
+            border-radius: 32px;
+            padding: 1rem 0;
+        }
+        .slider-track {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            animation: scroll-track 45s linear infinite;
+            will-change: transform;
+            padding: 0;
+        }
+        .slide {
+            min-width: 360px;
+            flex: 0 0 auto;
+        }
+        .slide img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 24px;
+            border: 1px solid #d9d9d9;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.5s ease;
+        }
+        .slide img:hover {
+            transform: scale(1.03);
+        }
+        .slider:hover .slider-track {
+            animation-play-state: paused; /* pausa al pasar el mouse */
+        }
+
+        @keyframes scroll-track {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @media (max-width: 768px) {
+            .slide { min-width: 260px; }
+            .slide img { height: 200px; }
+        }
+
+        /* Dark mode adjustments for slider */
+        body.dark-mode .slider { background: #222; border-color: #333; }
+        body.dark-mode .slide img { border-color: #333; box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
+
+        /* Modal override for image preview */
+        #image-modal .modal-close {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid #d9d9d9;
+            color: #1a1a1a;
+        }
+        #image-modal .modal-close:hover { background: #fff; }
+        body.dark-mode #image-modal .modal-close {
+            background: rgba(34,34,34,0.9);
+            border-color: #333;
+            color: #fff;
+        }
+        body.dark-mode #image-modal #modal-preview-img { background: #222; border-color: #333; }
+    </style>
+</head>
+<body>
+    <div class="aura"></div>
+    <header>
+        <nav>
+            <div class="logo">aesheen studio</div>
+            <ul>
+                <li><a href="#about" data-i18n="About">About</a></li>
+                <li><a href="#work" data-i18n="Work">Work</a></li>
+                <li><a href="#services" data-i18n="Services">Services</a></li>
+                <li><a href="#contact" data-i18n="Contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    ◐
+                </button>
+                <button class="lang-toggle" onclick="toggleLanguage()" aria-label="Toggle language" id="lang-btn">
+                    English
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1 data-i18n="Graphic Designer">Graphic Designer</h1>
+        <p data-i18n="Creating meaningful visual identities and design systems that tell your story with clarity and purpose.">Creating meaningful visual identities and design systems that tell your story with clarity and purpose.</p>
+        <a href="#work" class="cta-button" data-i18n="View Work">View Work</a>
+    </section>
+
+    <section id="about">
+        <h2 data-i18n="About">About</h2>
+        <p class="section-subtitle" data-i18n="Building brands through design">Building brands through design</p>
+        <div class="about-content">
+            <p data-i18n="I'm a graphic designer specializing in branding, visual identity, and typography. My work focuses on creating cohesive design systems that communicate effectively and leave lasting impressions. Every project is an opportunity to craft something unique and meaningful.">
+                I'm a graphic designer specializing in branding, visual identity, and typography. 
+                My work focuses on creating cohesive design systems that communicate effectively 
+                and leave lasting impressions. Every project is an opportunity to craft something 
+                unique and meaningful.
+            </p>
+        </div>
+    </section>
+
+    <section id="work">
+        <h2 data-i18n="Selected Work">Selected Work</h2>
+        <p class="section-subtitle" data-i18n="Here are some of my projects.">Here are some of my projects.</p>
+        <div class="slider">
+            <div class="slider-track">
+                <div class="slide"><img src="images/f1.png" alt="Album Port"></div>
+                <div class="slide"><img src="images/horseal1.png" alt="Branding"></div>
+                <div class="slide"><img src="images/horseal2.png" alt="Typography"></div>
+                <div class="slide"><img src="images/f1.png" alt="Album Port"></div>
+                <div class="slide"><img src="images/horseal1.png" alt="Branding"></div>
+                <div class="slide"><img src="images/horseal2.png" alt="Typography"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal preview for work images -->
+    <div class="modal" id="image-modal">
+        <button class="modal-close" id="image-modal-close" aria-label="Close preview">×</button>
+        <div class="modal-content" style="max-width: 90vw; max-height: 85vh; border-radius: 24px; background: transparent; box-shadow: none;">
+            <img id="modal-preview-img" alt="Preview" style="max-width: 90vw; max-height: 85vh; width: auto; height: auto; border-radius: 16px; object-fit: contain; border: 1px solid rgba(0,0,0,0.08); background: #fff;" />
+        </div>
+    </div>
+
+    <section id="services">
+        <h2 data-i18n="Services">Services</h2>
+        <p class="section-subtitle" data-i18n="What I do">What I do</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="12" cy="15" r="3" fill="currentColor"/>
+                        <circle cx="28" cy="15" r="3" fill="currentColor"/>
+                        <circle cx="20" cy="28" r="3" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h3 data-i18n="Branding">Branding</h3>
+                <p data-i18n="Logo design, brand strategy, and complete visual identity systems that define who you are.">Logo design, brand strategy, and complete visual identity systems that define who you are.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="8" y="8" width="24" height="24" stroke="currentColor" stroke-width="1.5"/>
+                        <rect x="12" y="12" width="4" height="4" fill="currentColor"/>
+                        <rect x="24" y="12" width="4" height="4" fill="currentColor"/>
+                        <rect x="12" cy="24" width="4" height="4" fill="currentColor"/>
+                        <rect x="24" cy="24" width="4" height="4" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h3 data-i18n="Visual Identity">Visual Identity</h3>
+                <p data-i18n="Creating cohesive visual languages across all brand touchpoints and applications.">Creating cohesive visual languages across all brand touchpoints and applications.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 28L15 12L20 24L25 14L30 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <text x="8" y="32" font-size="16" font-weight="600" fill="currentColor">Aa</text>
+                    </svg>
+                </div>
+                <h3 data-i18n="Typography">Typography</h3>
+                <p data-i18n="Custom typeface design and typographic systems that enhance your brand's voice.">Custom typeface design and typographic systems that enhance your brand's voice.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="6" width="20" height="28" stroke="currentColor" stroke-width="1.5"/>
+                        <line x1="14" y1="14" x2="26" y2="14" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                        <line x1="14" y1="20" x2="26" y2="20" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                        <line x1="14" y1="26" x2="20" y2="26" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 data-i18n="Print Design">Print Design</h3>
+                <p data-i18n="Album covers, posters, packaging, and editorial design with attention to craft and detail.">Album covers, posters, packaging, and editorial design with attention to craft and detail.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 data-i18n="Get in Touch">Get in Touch</h2>
+        <p class="section-subtitle" data-i18n="Let's work together">Let's work together</p>
+        <div class="contact-content">
+            <p data-i18n="Have a project in mind? I'd love to hear about it and discuss how we can bring your vision to life.">Have a project in mind? I'd love to hear about it and discuss how we can bring your vision to life.</p>
+            <a href="mailto:aeshen.studio@gmail.com" class="contact-email">aeshen.studio@gmail.com</a>
+            <div class="social-links">
+                <a href="https://instagram.com/aes__en" data-i18n="Instagram">Instagram</a>
+                <a href="https://www.behance.net/aeshen" data-i18n="Behance">Behance</a>
+                <a href="https://www.Linkedin.com/in/ezequiel-oliva-365685379" data-i18n="LinkedIn">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Aesheen Studio. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Language translations
+        const translations = {
+            en: {
+                'Graphic Designer': 'Graphic Designer',
+                'Creating meaningful visual identities and design systems that tell your story with clarity and purpose.': 'Creating meaningful visual identities and design systems that tell your story with clarity and purpose.',
+                'View Work': 'View Work',
+                'About': 'About',
+                'Work': 'Work',
+                'Services': 'Services',
+                'Contact': 'Contact',
+                'Building brands through design': 'Building brands through design',
+                'I\'m a graphic designer specializing in branding, visual identity, and typography. My work focuses on creating cohesive design systems that communicate effectively and leave lasting impressions. Every project is an opportunity to craft something unique and meaningful.': 'I\'m Ezequiel Oliva, a freelance graphic designer based in Argentina, Buenos Aires, specializing in branding, visual identity, and typography. My work focuses on creating cohesive design systems that communicate effectively and leave lasting impressions. Every project is an opportunity to craft something unique and meaningful.',
+                'Selected Work': 'Selected Work',
+                'Recent projects': 'Recent projects',
+                'Album Port': 'Album Port',
+                'Album cover design and promotional materials for an independent music artist, capturing the essence of their sound through bold typography and visual storytelling.': 'Album cover design and promotional materials for an independent music artist, capturing the essence of their sound through bold typography and visual storytelling.',
+                'Branding': 'Branding',
+                'Complete visual identity system including logo design, color palette, typography selection, and brand guidelines for contemporary aesthetics.': 'Complete visual identity system including logo design, color palette, typography selection, and brand guidelines for contemporary aesthetics.',
+                'Typography': 'Typography',
+                'Experimental typographic composition exploring the relationship between text, image, and visual hierarchy in editorial design.': 'Experimental typographic composition exploring the relationship between text, image, and visual hierarchy in editorial design.',
+                'Services': 'Services',
+                'What I do': 'What I do',
+                'Logo design, brand strategy, and complete visual identity systems that define who you are.': 'Logo design, brand strategy, and complete visual identity systems that define who you are.',
+                'Visual Identity': 'Visual Identity',
+                'Creating cohesive visual languages across all brand touchpoints and applications.': 'Creating cohesive visual languages across all brand touchpoints and applications.',
+                'Custom typeface design and typographic systems that enhance your brand\'s voice.': 'Custom typeface design and typographic systems that enhance your brand\'s voice.',
+                'Print Design': 'Print Design',
+                'Album covers, posters, packaging, and editorial design with attention to craft and detail.': 'Album covers, posters, packaging, and editorial design with attention to craft and detail.',
+                'Get in Touch': 'Get in Touch',
+                'Let\'s work together': 'Let\'s work together',
+                'Have a project in mind? I\'d love to hear about it and discuss how we can bring your vision to life.': 'Have a project in mind? I\'d love to hear about it and discuss how we can bring your vision to life.',
+                'Instagram': 'Instagram',
+                'Behance': 'Behance',
+                'LinkedIn': 'LinkedIn',
+                'aesheen studio': 'aesheen studio',
+                'Here are some of my projects.': 'Here are some of my projects.'
+            },
+            es: {
+                'Graphic Designer': 'Diseñador Gráfico',
+                'Creating meaningful visual identities and design systems that tell your story with clarity and purpose.': 'Creando identidades visuales significativas y sistemas de diseño que cuentan tu historia con claridad y propósito.',
+                'View Work': 'Ver Trabajos',
+                'About': 'Acerca de',
+                'Work': 'Trabajos',
+                'Services': 'Servicios',
+                'Contact': 'Contacto',
+                'Building brands through design': 'Construyendo marcas a través del diseño',
+                'I\'m a graphic designer specializing in branding, visual identity, and typography. My work focuses on creating cohesive design systems that communicate effectively and leave lasting impressions. Every project is an opportunity to craft something unique and meaningful.': 'Soy Ezequiel Oliva, diseñador gráfico freelancer ubicado en Argentina, Buenos Aires, especializado en branding, identidad visual y tipografía. Mi trabajo se enfoca en crear sistemas de diseño coherentes que comuniquen efectivamente y dejen impresiones duraderas. Cada proyecto es una oportunidad para crear algo único y significativo.',
+                'Selected Work': 'Trabajos Destacados',
+                'Recent projects': 'Proyectos recientes',
+                'Album Port': 'Portada de Álbum',
+                'Album cover design and promotional materials for an independent music artist, capturing the essence of their sound through bold typography and visual storytelling.': 'Diseño de portada de álbum y materiales promocionales para un artista de música independiente, capturando la esencia de su sonido a través de tipografía audaz y narrativa visual.',
+                'Branding': 'Branding',
+                'Complete visual identity system including logo design, color palette, typography selection, and brand guidelines for contemporary aesthetics.': 'Sistema completo de identidad visual incluyendo diseño de logo, paleta de colores, selección de tipografía y directrices de marca para estética contemporánea.',
+                'Typography': 'Tipografía',
+                'Experimental typographic composition exploring the relationship between text, image, and visual hierarchy in editorial design.': 'Composición tipográfica experimental explorando la relación entre texto, imagen y jerarquía visual en diseño editorial.',
+                'Services': 'Servicios',
+                'What I do': 'Lo que hago',
+                'Logo design, brand strategy, and complete visual identity systems that define who you are.': 'Diseño de logo, estrategia de marca y sistemas completos de identidad visual que definen quién eres.',
+                'Visual Identity': 'Identidad Visual',
+                'Creating cohesive visual languages across all brand touchpoints and applications.': 'Creando lenguajes visuales coherentes en todos los puntos de contacto y aplicaciones de marca.',
+                'Custom typeface design and typographic systems that enhance your brand\'s voice.': 'Diseño de tipografía personalizada y sistemas tipográficos que mejoren la voz de tu marca.',
+                'Print Design': 'Diseño Impreso',
+                'Album covers, posters, packaging, and editorial design with attention to craft and detail.': 'Portadas de álbum, carteles, empaques y diseño editorial con atención al oficio y los detalles.',
+                'Get in Touch': 'Ponte en Contacto',
+                'Let\'s work together': 'Trabajemos juntos',
+                'Have a project in mind? I\'d love to hear about it and discuss how we can bring your vision to life.': '¿Tienes un proyecto en mente? Me encantaría escucharlo y discutir cómo podemos dar vida a tu visión.',
+                'Instagram': 'Instagram',
+                'Behance': 'Behance',
+                'LinkedIn': 'LinkedIn',
+                'aesheen studio': 'aesheen studio',
+                'Project Type': 'Tipo de Proyecto',
+                'Album Cover & Branding': 'Portada de Álbum & Branding',
+                'Year': 'Año',
+                'Services': 'Servicios',
+                'Design, Typography, Art Direction': 'Diseño, Tipografía, Dirección de Arte',
+                'Visual Identity System': 'Sistema de Identidad Visual',
+                'Logo Design, Brand Guidelines, Color Palette': 'Diseño de Logo, Guía de Marca, Paleta de Colores',
+                'Editorial Design': 'Diseño Editorial',
+                'Typography, Composition, Print Design': 'Tipografía, Composición, Diseño Impreso',
+                'Here are some of my projects.': 'Aquí tienes algunos de mis proyectos.'
+            }
+        };
+
+        let currentLanguage = localStorage.getItem('language') || 'en';
+
+        function translatePage() {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLanguage][key]) {
+                    el.textContent = translations[currentLanguage][key];
+                }
+            });
+
+            // Update lang button
+            document.querySelector('.lang-toggle').textContent = currentLanguage === 'en' ? 'Español' : 'English';
+        }
+
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
+            localStorage.setItem('language', currentLanguage);
+            translatePage();
+        }
+
+        // Aura follows mouse
+        const aura = document.querySelector('.aura');
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let auraX = window.innerWidth / 2;
+        let auraY = window.innerHeight / 2;
+
+        // Throttle mouse move for better performance
+        let lastTime = 0;
+        document.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if (now - lastTime > 16) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                lastTime = now;
+            }
+        });
+
+        function updateAuraPosition() {
+            auraX += (mouseX - auraX) * 0.12;
+            auraY += (mouseY - auraY) * 0.12;
+            
+            aura.style.left = auraX + 'px';
+            aura.style.top = auraY + 'px';
+            
+            requestAnimationFrame(updateAuraPosition);
+        }
+
+        updateAuraPosition();
+
+        // Theme toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        }
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Modal functionality
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal when clicking outside the content
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                const modalId = event.target.id;
+                closeModal(modalId);
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const activeModals = document.querySelectorAll('.modal.active');
+                activeModals.forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', translatePage);
+
+        // Expose toggles globally to ensure inline onclick works even if bundlers/scopes change
+        window.toggleTheme = toggleTheme;
+        window.toggleLanguage = toggleLanguage;
+
+        // Image preview modal logic for Selected Work slider
+        (function setupImagePreview(){
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-preview-img');
+            const closeBtn = document.getElementById('image-modal-close');
+            const slider = document.querySelector('#work .slider');
+            if (!modal || !modalImg || !closeBtn || !slider) return;
+
+            // Delegate click on images inside the slider
+            slider.addEventListener('click', (e) => {
+                const target = e.target;
+                if (target && target.tagName === 'IMG') {
+                    modalImg.src = target.src;
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+
+            // Close handlers
+            function closeModalPreview(){
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                modalImg.src = '';
+            }
+
+            closeBtn.addEventListener('click', closeModalPreview);
+
+            // Close when clicking overlay outside the image/content
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModalPreview();
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
